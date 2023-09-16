@@ -2,6 +2,7 @@ import {
   Component,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
@@ -11,7 +12,7 @@ import {
   templateUrl: './title.component.html',
   styleUrls: ['./title.component.scss'],
 })
-export class TitleComponent implements OnInit, OnChanges {
+export class TitleComponent implements OnInit, OnChanges, OnDestroy {
   @Input() public title: string = 'Welcome!';
   /* This input public title is being assigned a 'welcome' value by default, but if i go on the app component and tell
   <app-title title="Not welcome anymore"> the input is receiving a data from the outside, and it will overwrite this
@@ -27,6 +28,12 @@ export class TitleComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
   }
+
+
+  ngOnDestroy(): void {
+    alert('Component destroyed');
+  }
+
 
   ngOnChanges(changes: SimpleChanges): void {
     /* In this example, we want the ngOnChange to tell us when the component was changed*/
