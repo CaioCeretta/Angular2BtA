@@ -1,0 +1,57 @@
+<h4>NgIf</h4>
+<p *ngIf="condition; else elseBlock">
+  True
+</p>
+
+<!-- The else condition is setted on an ngIf, after the if condition and semi colon, and it's determined by a
+<ng-template> with a #name  a name that is supposed to go on the ngIf else -->
+
+<ng-template #elseBlock>
+  <p>False</p>
+</ng-template>
+
+<hr>
+
+<h4>NgIf with events</h4>
+
+<p *ngIf="conditionClick">
+  True
+</p>
+
+<p *ngIf="!conditionClick">
+  False
+</p>
+
+<button (click)="onClick()">Click Me!</button>
+
+<hr>
+
+<h4>NgFor</h4>
+
+<ul>
+  <li *ngFor="let item of list; let i = index" (click)="onClickEventList(i)">
+    [{{i}}] - {{item.name}} {{item.age}}
+  </li>
+</ul>
+
+<button (click)="onClickAddList()">Add</button>
+
+<hr>
+
+<h4>ngSwitch</h4>
+
+<input type="text" [(ngModel)]="name" />
+
+<div [ngSwitch]="name">
+  <p *ngSwitchCase="'Caio'">
+    Caio
+  </p>
+  <p *ngSwitchCase="'Claudio'">
+    Claudio
+  </p>
+
+  <p *ngSwitchDefault>
+    No name was found
+  </p>
+</div>
+

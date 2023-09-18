@@ -1,0 +1,59 @@
+<!-- Interpolation -->
+<h2>Interpolation</h2>
+
+{{name}} has {{age}} years
+
+<p>{{ name }} has more than 26 years?</p>
+On string interpolation we can use simple typescript expressions
+
+ <p>{{ age > 26 }}</p>
+
+<p>How much is {{ age }} + 1?</p>
+<p>{{ age + 1 }} ?</p>
+
+
+<h2>Property Binding</h2>
+
+<button [disabled]="checkIfDisabled">Property Binding</button>
+<!-- This will still work, but property binding makes this communucation easier, for example, if we go to the developer
+tools, we can see that this case the disabled value is checkIfDisabled, but if we set it as [disabled], disabled value
+will be true or, if we set it to false, it will not -->
+
+<br><br>
+
+<img [src]="imgSrc" title="imgTitle"/>
+
+<!-- in this case, if we don't set the value as [src], it will use the imgSrc string, just like as used above, and the
+title will also be the string "imgTitle". But if iset it as [src]="imgSrc" it will utilize the ts property value -->
+
+<h2>Event Binding</h2>
+
+<button (click)="alertInfo($event)">Click me!</button>
+<!-- (click) will call a method on our ts file, in this case the method parameter is an event of the type MouseEvent
+and this case is showing all the information about a mouseEvent, which allows us to do many different things-->
+<div (mousemove)="mouseMoveTest($event)" style="background: red; width: 300px; height: 100px;">
+
+</div>
+
+<ul>
+  <li>{{position.x}}</li>
+  <li>{{position.y}}</li>
+</ul>
+<!-- in this clase, the event that was binded is the mousemove, and when i call it that way, calling the method with
+the $event argument, our mouseMoveTest function will receive the particular event and it allowed us to assign, to the
+property position, the values of x and y based on the offset of the event-->
+
+
+
+<br>
+<br>
+
+<h2>Two-way Binding</h2>
+
+<input type="text"  [(ngModel)]="name" />
+{{name}}
+
+<!-- One thing we can notice in this example, is how the name we showed right in the beginning, is also updating, this
+is something we should be careful of -->
+
+
