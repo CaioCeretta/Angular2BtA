@@ -5,7 +5,16 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <br />
 
-    <app-behaviours-directives></app-behaviours-directives>
+    <app-attributes-directives>
+      <h1>Lessons about attribute Directives</h1>
+      <hr>
+    </app-attributes-directives>
+<!--
+    <app-attributes-directives>
+      <h1>Understanding Directives</h1>
+      <hr>
+    </app-attributes-directives> -->
+
     <router-outlet></router-outlet>
   `,
 })

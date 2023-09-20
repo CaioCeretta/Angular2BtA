@@ -1,0 +1,153 @@
+<!-- <ng-content select="h1"></ng-content>
+<!-- <div *ngIf="name !== 'Caio'">
+
+<h2> NgClass </h2>
+
+<p [ngClass]="{'active': value, 'disabled': !value}">NgClass Example</p> -->
+
+<!-- In NgClass, how it is an attribute directive, we wrap it in braces like [ngClass] and after the ' = ' we can start
+our ts logic, with it, we can do validations, in the { } we are setting the value of an object, first of all, in this
+case, it sets an object with a active property with the value true and a disabled property with the value of false
+
+to showcase how ngClass works, we will use a ts property value attr and the false one as !value
+
+if the ts attr value is true, the class will be active, otherwise, disabled
+
+this is how the dynamicity of ngClass works
+ -->
+
+ <!-- <hr>
+
+ <h2>Ng Style</h2>
+
+<p [ngStyle]="{'height': height, 'background': background}">NgStyle</p>
+
+</div> -->
+<!-- ngStyle is for inline styles like the above, we pass [ngStyle] and on it we set it dynamycally based on a ts
+  expression -->
+
+  <!-- <hr>
+
+  <h2>NgModel</h2>
+
+  <input [(ngModel)]="name" /> {{name}}
+  <button (click)="save()">Save</button> -->
+
+
+
+  <!-- ngModel is used for the two way binding, reflecting, altering the value of the ts while changing the client side,
+  but it can also be used for stuffs like this
+
+  every time we write something on the input and save, we call a method of our ts, which pushes the string typed into
+  the list array
+-->
+
+
+<!--
+
+  <li *ngFor="let item of list">
+    {{item.name}}
+  </li> -->
+
+
+  <h2>Ng-Template</h2>
+
+  <!-- NgTemplate is an html element that helps us making, per example, ngIf validations before the DOM being loaded,
+  like, before loading our page, i want this specific div not to show up, but it also cannot be so different that the
+other ones and end up just taking more space
+    So NgTemplate works for encapsulating data where we can make validations (this is just the basic, we'll go into
+    other bigger examples soon)
+-->
+
+
+<!-- For an ngFor, for example, when on other components like the li, we just passed *ngFor="let item of list", on a
+ng-template, we must set it as <ng-template ngFor let-DesiredListItemName and then [ngForOf]="NameOfTheList"  -->
+
+<ng-template ngFor let-item [ngForOf]="list">
+
+  <p>{{item.name}}</p>
+
+</ng-template>
+
+<input [(ngModel)]="name" /> {{name}}
+<button (click)="save()">Save</button>
+
+
+<!-- But on a simple ngFor, it the list is empty, he would verify if there is an item and wouldn't render anything
+it creates on the DOM and automatically removes if empty, but on ng-template, it will verify and won't event create the
+element on the DOM, so we gain a bit more of speed to the app
+
+-->
+
+<hr>
+
+<h2>Ng-Content</h2>
+
+<!-- He helps us letting the component even smarter in angular, what does it mean?
+Let's say we have a situation where we need to change values on a specific place in our app, and on this app we use
+many times a component, like 'anyname' and in other screen we need to use the same component passing down another value
+
+Here's an example
+-->
+
+<ng-content select="hr"></ng-content>
+
+<!-- In Angular, ng-content is used to project content from a parent component into a child component's template. It
+   allows you to define placeholders in a child component's template where the content from the parent component will be
+  inserted. This is typically done using <ng-content></ng-content> tags in the child component's template. -->
+
+  <h2>Pipe</h2>
+<input type="text" [(ngModel)]="name">
+<button (click)="save()">Save</button>
+
+<ul>
+  <li *ngFor="let item of list">{{item.name | uppercase }}</li>
+</ul>
+
+<!-- Pipe is used on interpolations, it helps us doing something inside of our app, in this case above, all items are
+going to be transformed, it is doing the same as, like
+
+function uppercase(string) {
+  return string.toUpperCase
+}
+
+when we are setting uppercase, after the pipe, we are basically using the value on the left side of the pipe and using it
+as as property on the string method. Not exactly like this, but this is basically how it works
+Here are some other example, this functionality helps us in many ways.
+
+
+In Angular, pipes are a powerful feature that allows you to transform and format data in your templates before
+displaying it to the user. Pipes are used to apply various transformations to values in the HTML templates, making it
+easier to present data in a user-friendly.
+
+Examples:
+
+    Pipe Syntax: Pipes are applied to data within your template using the | symbol followed by the pipe name and optional
+     parameters. For example: {{ data | pipeName:param1:param2 }}.
+
+    Built-in Pipes: Angular provides a set of built-in pipes that you can use out of the box. Some common built-in pipes
+     include {{ date | date:'short' }} for formatting dates, and {{ text | uppercase }} for converting text to uppercase.
+
+    Custom Pipes: You can also create your custom pipes to perform specific transformations on your data. To create a
+    custom pipe, you need to define a TypeScript class that implements the PipeTransform interface and provides a
+    transform method.
+
+    Chaining Pipes: You can chain multiple pipes together to apply multiple transformations to a value.
+     For example: {{ data | pipe1 | pipe2 }}.
+
+    Parameterized Pipes: Some pipes accept parameters to customize their behavior. These parameters are passed as
+     colon-separated values after the pipe name. For example: {{ data | slice:1:5 }} slices a portion of an array or string.
+
+    Async Pipes: The async pipe is a special built-in pipe used to subscribe to an Observable or Promise in your template.
+     It automatically manages the subscription and updates the view when the data arrives or changes.
+
+    Pure and Impure Pipes: By default, Angular pipes are pure, which means they are stateless and produce the same
+    output for the same input. However, you can create impure pipes by setting the pure property to false in the pipe
+    decorator. Impure pipes can have side effects and are recalculated on every change detection cycle.
+
+    Usage in Templates: Pipes can be used within HTML templates for components, directives, and views to format and
+    manipulate data directly within the view layer, without modifying the underlying component data.
+
+-->
+
+<p>{{date | date: 'dd/MM/yyyy'}}</p>

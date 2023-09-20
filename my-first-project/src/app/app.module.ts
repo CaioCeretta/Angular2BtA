@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { BehavioursDirectivesComponent } from './behaviours-directives/behaviours-directives.component';
+import { AttributesDirectivesComponent } from './attributes-directives/attributes-directives.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BehavioursDirectivesComponent } from './behaviours-directives/behaviour
     TitleComponent,
     DataBindingComponent,
     BehavioursDirectivesComponent,
+    AttributesDirectivesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
